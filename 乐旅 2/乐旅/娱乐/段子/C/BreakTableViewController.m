@@ -9,6 +9,7 @@
 #import "BreakTableViewController.h"
 #import "DetailsTableViewController.h"
 #import "BreakTableViewCell.h"
+#import "BreakImageViewCell.h"
 @interface BreakTableViewController ()
 
 @end
@@ -61,14 +62,18 @@
     
     
     static NSString *cell_id = @"cell";
-    BreakTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cell_id];
+    BreakImageViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cell_id];
     if (!cell) {
-        cell = [[BreakTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell_id];
+        cell = [[BreakImageViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell_id];
     }
-    cell.contentLabel.text =@"daffshdfj sdf安静的回复啊啊速度恢复快接啊啊速度发货就卡死法就是地方按时交电话费就阿克苏发数据恢复 氨基酸的回复将阿斯顿发货阿迪就会发觉开始的合法电话服务i啊睡觉的发挥阿斯顿交话费da";
-    // Configure the cell...
+    cell.userContentLabel.text =@"daffsd加进来就快乐健康健康科技始的hdfj";
+    [cell.shareBtn addTarget:self action:@selector(shareBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     
     return cell;
+}
+// 分享按钮
+-(void)shareBtnAction:(UIButton *)sender{
+    NSLog(@"分享");
 }
 // 点击cell 跳转页面
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -80,7 +85,7 @@
   
     
     
-    return  170;
+    return  220;
 }
 
 

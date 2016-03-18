@@ -20,6 +20,8 @@
 
 @property(nonatomic,strong)UIImageView *userContentView; //内容视图
 
+@property(nonatomic,strong)UIView *userView; // 小图集合
+
 
 @property(nonatomic,strong)UIButton *smileBtn; // 微笑按钮
 @property(nonatomic,strong)UIButton *cryBtn; //哭按钮

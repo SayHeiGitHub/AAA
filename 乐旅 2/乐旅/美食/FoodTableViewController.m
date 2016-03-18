@@ -8,6 +8,7 @@
 
 #import "FoodTableViewController.h"
 #import "FoodTableViewCell.h"
+#import "CarportTableViewController.h"
 @interface FoodTableViewController ()
 
 @end
@@ -24,6 +25,11 @@
     [self.tableView.mj_header beginRefreshing];
     
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+    
+    UIBarButtonItem *right = [[UIBarButtonItem alloc]initWithTitle:@"车库" style:UIBarButtonItemStylePlain target:self action:@selector(rightAction:)];
+    self.navigationItem.rightBarButtonItem = right;
+    
+    
 }
 - (void)loadNewData{
     [self.tableView reloadData];
@@ -33,6 +39,12 @@
 -(void)loadMoreData{
     [self.tableView reloadData];
     [self.tableView.mj_footer endRefreshing];
+}
+
+// 点击车库按钮
+-(void)rightAction:(UIBarButtonItem *)sender{
+    CarportTableViewController *CarVC = [[CarportTableViewController alloc]init];
+    [self.navigationController pushViewController:CarVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
