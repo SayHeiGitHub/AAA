@@ -39,6 +39,7 @@
 
 -(void)makeData{
     [self.reqest requestDepotWithLng:@"116.337833" lat:@"39.992772" success:^(NSArray *array) {
+        [self.arr removeAllObjects];
         [self.arr addObjectsFromArray:array];
         NSLog(@"%@r", array);
     }];}
@@ -59,7 +60,7 @@
 
 // 从新加载车库
 -(void)rightBtnAction:(UIBarButtonItem *)sender{
-   
+    [self makeData];
 
 }
 - (void)didReceiveMemoryWarning {
