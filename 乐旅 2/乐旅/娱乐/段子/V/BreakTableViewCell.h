@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+//这类是段子内容不带图片的
+
+
 @interface BreakTableViewCell : UITableViewCell
 
 @property(nonatomic,strong)UIImageView *userImage;// 用户头像

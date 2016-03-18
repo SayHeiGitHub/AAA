@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5A24B273D79A192FF9C82E22 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A2B6C752B03F224A6B9A60F9 /* libPods.a */; };
+		DAA0999B1C9B87CF0034737C /* NewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA0999A1C9B87CF0034737C /* NewTableViewCell.m */; };
 		DAA2DA6E1C98E8F200A230EC /* VedioTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA2DA6D1C98E8F200A230EC /* VedioTableViewCell.m */; };
 		DAA2DA721C99516B00A230EC /* BreakTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA2DA711C99516B00A230EC /* BreakTableViewCell.m */; };
-		DAA2DA751C998C9200A230EC /* NewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA2DA741C998C9200A230EC /* NewTableViewCell.m */; };
 		DAA2DA781C99A0CE00A230EC /* PicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA2DA771C99A0CE00A230EC /* PicTableViewCell.m */; };
 		DAA2DA7B1C99ABCF00A230EC /* SecnicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA2DA7A1C99ABCF00A230EC /* SecnicTableViewCell.m */; };
 		DAA2DA7E1C99AE4600A230EC /* FoodTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA2DA7D1C99AE4600A230EC /* FoodTableViewCell.m */; };
@@ -36,13 +36,13 @@
 /* Begin PBXFileReference section */
 		8EE812DF006AE51CB27903EC /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A2B6C752B03F224A6B9A60F9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAA099991C9B87CF0034737C /* NewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewTableViewCell.h; sourceTree = "<group>"; };
+		DAA0999A1C9B87CF0034737C /* NewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewTableViewCell.m; sourceTree = "<group>"; };
 		DAA2DA6C1C98E8F200A230EC /* VedioTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VedioTableViewCell.h; sourceTree = "<group>"; };
 		DAA2DA6D1C98E8F200A230EC /* VedioTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VedioTableViewCell.m; sourceTree = "<group>"; };
 		DAA2DA6F1C99320400A230EC /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		DAA2DA701C99516B00A230EC /* BreakTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BreakTableViewCell.h; sourceTree = "<group>"; };
 		DAA2DA711C99516B00A230EC /* BreakTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BreakTableViewCell.m; sourceTree = "<group>"; };
-		DAA2DA731C998C9200A230EC /* NewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewTableViewCell.h; path = "../../主要/NewTableViewCell.h"; sourceTree = "<group>"; };
-		DAA2DA741C998C9200A230EC /* NewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewTableViewCell.m; path = "../../主要/NewTableViewCell.m"; sourceTree = "<group>"; };
 		DAA2DA761C99A0CE00A230EC /* PicTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicTableViewCell.h; sourceTree = "<group>"; };
 		DAA2DA771C99A0CE00A230EC /* PicTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicTableViewCell.m; sourceTree = "<group>"; };
 		DAA2DA791C99ABCF00A230EC /* SecnicTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecnicTableViewCell.h; sourceTree = "<group>"; };
@@ -373,8 +373,8 @@
 		DABFBBD71C982A6A00EFD120 /* V */ = {
 			isa = PBXGroup;
 			children = (
-				DAA2DA731C998C9200A230EC /* NewTableViewCell.h */,
-				DAA2DA741C998C9200A230EC /* NewTableViewCell.m */,
+				DAA099991C9B87CF0034737C /* NewTableViewCell.h */,
+				DAA0999A1C9B87CF0034737C /* NewTableViewCell.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -629,8 +629,8 @@
 				DABFBBE61C982B2900EFD120 /* RootTabBarController.m in Sources */,
 				DABFBB641C980E5600EFD120 /* AppDelegate.m in Sources */,
 				DABFBC011C982C0D00EFD120 /* FoodTableViewController.m in Sources */,
-				DAA2DA751C998C9200A230EC /* NewTableViewCell.m in Sources */,
 				DABFBBF51C982BAB00EFD120 /* VedioTableViewController.m in Sources */,
+				DAA0999B1C9B87CF0034737C /* NewTableViewCell.m in Sources */,
 				DABFBC071C982C3000EFD120 /* MeTableViewController.m in Sources */,
 				DABFBBEF1C982B8000EFD120 /* PivterTableViewController.m in Sources */,
 				DAA2DA721C99516B00A230EC /* BreakTableViewCell.m in Sources */,

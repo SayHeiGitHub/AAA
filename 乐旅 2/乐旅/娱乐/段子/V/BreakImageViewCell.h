@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+
+//这类是段子内容带有图片的 并且还有内容
+
 @interface BreakImageViewCell : UITableViewCell
 @property(nonatomic,strong)UIImageView *userImageView; // 用户头像
 @property(nonatomic,strong)UILabel *userName; // 用户名
