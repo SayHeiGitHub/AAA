@@ -25,15 +25,4 @@
 // 停车场地址
 @property (weak, nonatomic) IBOutlet UILabel *portAddress;
 
-
-
-
-
-
-
-
-
-
-
-
 @end

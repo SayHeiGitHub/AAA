@@ -8,7 +8,14 @@
 
 #import "CarportTableViewController.h"
 #import "CarportTableViewCell.h"
-@interface CarportTableViewController ()
+#import "DepotModel.h"
+#import "FoodRequest.h"
+#import <UIImageView+WebCache.h>
+
+@interface CarportTableViewController ()<FootRequestDalegate>
+//按定位接收数组
+@property(nonatomic,strong)NSMutableArray *arr;
+@property(nonatomic,strong)FoodRequest *reqest;
 
 @end
 
@@ -16,18 +23,44 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.tableView registerNib:[UINib nibWithNibName:@"CarportTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     self.view.backgroundColor  = [UIColor whiteColor];
     
-    UIBarButtonItem *right = [[UIBarButtonItem alloc]initWithTitle:@"刷新" style:UIBarButtonItemStylePlain target:self action:@selector(rightAction:)];
+    UIBarButtonItem *right = [[UIBarButtonItem alloc]initWithTitle:@"刷新" style:UIBarButtonItemStylePlain target:self action:@selector(rightBtnAction:)];
     self.navigationItem.rightBarButtonItem = right;
+    self.reqest = [FoodRequest shareFoodRequest];
+    self.reqest.delegate = self;
+    //
     
-//    [self.tableView registerClass:[CarportTableViewCell class] forCellReuseIdentifier:@"cell"];
-    
-    
+    [self makeData];
+ 
+
 }
+
+-(void)makeData{
+    [self.reqest requestDepotWithLng:@"116.337833" lat:@"39.992772" success:^(NSArray *array) {
+        [self.arr addObjectsFromArray:array];
+        NSLog(@"%@r", array);
+    }];}
+
+- (NSMutableArray *)arr {
+    if (!_arr) {
+        _arr = [NSMutableArray array];
+    }
+    return _arr;
+}
+//主线程刷新数据
+- (void)reloadViewWithData{
+    __weak typeof(self) weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [weakSelf.tableView reloadData];
+    });
+}
+
 // 从新加载车库
--(void)rightAction:(UIBarButtonItem *)sender{
-    NSLog(@"刷新车库");
+-(void)rightBtnAction:(UIBarButtonItem *)sender{
+   
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -37,19 +70,39 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
+
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 10;
+
+    NSLog(@"====%@",self.arr);
+    return self.arr.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
  NSArray *Arr = [[NSBundle mainBundle] loadNibNamed:@"CarportTableViewCell" owner:self options:nil];
+    
     CarportTableViewCell *cell = [Arr lastObject];
+//    CarportTableViewCell *cell =[[CarportTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    DepotModel *model1 = [[DepotModel alloc]init];
+    model1 = self.arr[indexPath.row];
+    cell.portName.text = model1.CCMC;
+    //网址拼接
+    NSString *str1 = @"http://images.juheapi.com/park/";
+    NSString *str2 =[str1 stringByAppendingString:model1.CCTP];
+    NSString *str3 = [str1 stringByAppendingString:model1.KCWZT];
+    //图片加载
+    [cell.portTP sd_setImageWithURL:[NSURL URLWithString:str2]];
+    [cell.portTP.layer setMasksToBounds:YES];
+    [cell.portTP.layer setCornerRadius:10];
+    [cell.portHOT sd_setImageWithURL:[NSURL URLWithString:str3]] ;
+    cell.portBTJG.text = [NSString stringWithFormat:@"%@",model1.BTTCJG];
+    cell.portWSJG.text = model1.WSTCJG;
+    cell.portZCW.text = model1.ZCW;
+    cell.portKCW.text = model1.KCW;
+    cell.portAddress.text = model1.CCDZ;
     
     return cell;
 }

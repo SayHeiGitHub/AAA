@@ -12,6 +12,14 @@
 		DAA0999E1C9BD7010034737C /* CarportTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA0999D1C9BD7010034737C /* CarportTableViewController.m */; };
 		DAA099AA1C9BE40C0034737C /* CarportTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA099A81C9BE40C0034737C /* CarportTableViewCell.m */; };
 		DAA099AB1C9BE40C0034737C /* CarportTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAA099A91C9BE40C0034737C /* CarportTableViewCell.xib */; };
+		DAA099B11C9C22B50034737C /* FoodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA099B01C9C22B50034737C /* FoodModel.m */; };
+		DAA099B41C9C22DD0034737C /* DepotModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA099B31C9C22DD0034737C /* DepotModel.m */; };
+		DAA099C31C9C2CA40034737C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAA099C21C9C2CA40034737C /* CoreLocation.framework */; };
+		DAA099C51C9C2CB50034737C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAA099C41C9C2CB50034737C /* AdSupport.framework */; };
+		DAA099C71C9C2CC30034737C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAA099C61C9C2CC30034737C /* CoreTelephony.framework */; };
+		DAA099C91C9C2D3F0034737C /* JuheApisSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAA099C81C9C2D3F0034737C /* JuheApisSDK.a */; };
+		DAA099CD1C9C2E5B0034737C /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DAA099CC1C9C2E5B0034737C /* libc++.tbd */; };
+		DAA099D01C9C2F9C0034737C /* FoodRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA099CF1C9C2F9C0034737C /* FoodRequest.m */; };
 		DAA2DA6E1C98E8F200A230EC /* VedioTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA2DA6D1C98E8F200A230EC /* VedioTableViewCell.m */; };
 		DAA2DA721C99516B00A230EC /* BreakTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA2DA711C99516B00A230EC /* BreakTableViewCell.m */; };
 		DAA2DA781C99A0CE00A230EC /* PicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA2DA771C99A0CE00A230EC /* PicTableViewCell.m */; };
@@ -19,7 +27,7 @@
 		DAA2DA7E1C99AE4600A230EC /* FoodTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA2DA7D1C99AE4600A230EC /* FoodTableViewCell.m */; };
 		DAB1E6BC1C9AD5E600DEBA85 /* BreakImageViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB1E6BB1C9AD5E600DEBA85 /* BreakImageViewCell.m */; };
 		DABFBB611C980E5600EFD120 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DABFBB601C980E5600EFD120 /* main.m */; };
-		DABFBB641C980E5600EFD120 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DABFBB631C980E5600EFD120 /* AppDelegate.m */; };
+		DABFBB641C980E5600EFD120 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = DABFBB631C980E5600EFD120 /* AppDelegate.mm */; };
 		DABFBB6C1C980E5600EFD120 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DABFBB6B1C980E5600EFD120 /* Assets.xcassets */; };
 		DABFBB6F1C980E5600EFD120 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DABFBB6D1C980E5600EFD120 /* LaunchScreen.storyboard */; };
 		DABFBBE61C982B2900EFD120 /* RootTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = DABFBBE51C982B2900EFD120 /* RootTabBarController.m */; };
@@ -46,6 +54,19 @@
 		DAA099A71C9BE40C0034737C /* CarportTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarportTableViewCell.h; sourceTree = "<group>"; };
 		DAA099A81C9BE40C0034737C /* CarportTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarportTableViewCell.m; sourceTree = "<group>"; };
 		DAA099A91C9BE40C0034737C /* CarportTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarportTableViewCell.xib; sourceTree = "<group>"; };
+		DAA099AF1C9C22B50034737C /* FoodModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FoodModel.h; path = ../FoodModel.h; sourceTree = "<group>"; };
+		DAA099B01C9C22B50034737C /* FoodModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FoodModel.m; path = ../FoodModel.m; sourceTree = "<group>"; };
+		DAA099B21C9C22DD0034737C /* DepotModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepotModel.h; sourceTree = "<group>"; };
+		DAA099B31C9C22DD0034737C /* DepotModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepotModel.m; sourceTree = "<group>"; };
+		DAA099BE1C9C2B4D0034737C /* JHAPISDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JHAPISDK.h; sourceTree = "<group>"; };
+		DAA099BF1C9C2B4D0034737C /* JHOpenidSupplier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JHOpenidSupplier.h; sourceTree = "<group>"; };
+		DAA099C21C9C2CA40034737C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		DAA099C41C9C2CB50034737C /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		DAA099C61C9C2CC30034737C /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		DAA099C81C9C2D3F0034737C /* JuheApisSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = JuheApisSDK.a; sourceTree = "<group>"; };
+		DAA099CC1C9C2E5B0034737C /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		DAA099CE1C9C2F9C0034737C /* FoodRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodRequest.h; sourceTree = "<group>"; };
+		DAA099CF1C9C2F9C0034737C /* FoodRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodRequest.m; sourceTree = "<group>"; };
 		DAA2DA6C1C98E8F200A230EC /* VedioTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VedioTableViewCell.h; sourceTree = "<group>"; };
 		DAA2DA6D1C98E8F200A230EC /* VedioTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VedioTableViewCell.m; sourceTree = "<group>"; };
 		DAA2DA6F1C99320400A230EC /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -62,7 +83,7 @@
 		DABFBB5C1C980E5600EFD120 /* 乐旅.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "乐旅.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DABFBB601C980E5600EFD120 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DABFBB621C980E5600EFD120 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../AppDelegate.h; sourceTree = "<group>"; };
-		DABFBB631C980E5600EFD120 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../AppDelegate.m; sourceTree = "<group>"; };
+		DABFBB631C980E5600EFD120 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = ../AppDelegate.mm; sourceTree = "<group>"; };
 		DABFBB6B1C980E5600EFD120 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		DABFBB6E1C980E5600EFD120 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DABFBB701C980E5600EFD120 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
@@ -98,6 +119,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAA099CD1C9C2E5B0034737C /* libc++.tbd in Frameworks */,
+				DAA099C71C9C2CC30034737C /* CoreTelephony.framework in Frameworks */,
+				DAA099C51C9C2CB50034737C /* AdSupport.framework in Frameworks */,
+				DAA099C91C9C2D3F0034737C /* JuheApisSDK.a in Frameworks */,
+				DAA099C31C9C2CA40034737C /* CoreLocation.framework in Frameworks */,
 				5A24B273D79A192FF9C82E22 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,8 +163,22 @@
 		DAA099A31C9BD7360034737C /* M */ = {
 			isa = PBXGroup;
 			children = (
+				DAA099B21C9C22DD0034737C /* DepotModel.h */,
+				DAA099B31C9C22DD0034737C /* DepotModel.m */,
 			);
 			name = M;
+			sourceTree = "<group>";
+		};
+		DAA099B51C9C288E0034737C /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				DAA099BE1C9C2B4D0034737C /* JHAPISDK.h */,
+				DAA099BF1C9C2B4D0034737C /* JHOpenidSupplier.h */,
+				DAA099C81C9C2D3F0034737C /* JuheApisSDK.a */,
+				DAA099CE1C9C2F9C0034737C /* FoodRequest.h */,
+				DAA099CF1C9C2F9C0034737C /* FoodRequest.m */,
+			);
+			name = Tools;
 			sourceTree = "<group>";
 		};
 		DABFBB531C980E5600EFD120 = {
@@ -184,7 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				DABFBB621C980E5600EFD120 /* AppDelegate.h */,
-				DABFBB631C980E5600EFD120 /* AppDelegate.m */,
+				DABFBB631C980E5600EFD120 /* AppDelegate.mm */,
 				DABFBBE41C982B2900EFD120 /* RootTabBarController.h */,
 				DABFBBE51C982B2900EFD120 /* RootTabBarController.m */,
 				DAA2DA6F1C99320400A230EC /* PrefixHeader.pch */,
@@ -239,6 +279,7 @@
 				DABFBC001C982C0D00EFD120 /* FoodTableViewController.m */,
 				DABFBBC41C982A5D00EFD120 /* M */,
 				DABFBBC51C982A5D00EFD120 /* V */,
+				DAA099B51C9C288E0034737C /* Tools */,
 			);
 			path = "美食";
 			sourceTree = "<group>";
@@ -253,6 +294,8 @@
 		DABFBBC41C982A5D00EFD120 /* M */ = {
 			isa = PBXGroup;
 			children = (
+				DAA099AF1C9C22B50034737C /* FoodModel.h */,
+				DAA099B01C9C22B50034737C /* FoodModel.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -544,6 +587,10 @@
 		E7B01E323E2E81653DCCC59B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DAA099CC1C9C2E5B0034737C /* libc++.tbd */,
+				DAA099C61C9C2CC30034737C /* CoreTelephony.framework */,
+				DAA099C41C9C2CB50034737C /* AdSupport.framework */,
+				DAA099C21C9C2CA40034737C /* CoreLocation.framework */,
 				A2B6C752B03F224A6B9A60F9 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -673,10 +720,12 @@
 				DABFBBE91C982B5700EFD120 /* RecreationViewController.m in Sources */,
 				DAB1E6BC1C9AD5E600DEBA85 /* BreakImageViewCell.m in Sources */,
 				DABFBBE61C982B2900EFD120 /* RootTabBarController.m in Sources */,
-				DABFBB641C980E5600EFD120 /* AppDelegate.m in Sources */,
+				DAA099D01C9C2F9C0034737C /* FoodRequest.m in Sources */,
+				DABFBB641C980E5600EFD120 /* AppDelegate.mm in Sources */,
 				DABFBC011C982C0D00EFD120 /* FoodTableViewController.m in Sources */,
 				DABFBBF51C982BAB00EFD120 /* VedioTableViewController.m in Sources */,
 				DAA0999B1C9B87CF0034737C /* NewTableViewCell.m in Sources */,
+				DAA099B11C9C22B50034737C /* FoodModel.m in Sources */,
 				DABFBC071C982C3000EFD120 /* MeTableViewController.m in Sources */,
 				DABFBBEF1C982B8000EFD120 /* PivterTableViewController.m in Sources */,
 				DAA2DA721C99516B00A230EC /* BreakTableViewCell.m in Sources */,
@@ -687,6 +736,7 @@
 				DAA099AA1C9BE40C0034737C /* CarportTableViewCell.m in Sources */,
 				DABFBBFB1C982BEB00EFD120 /* DetailsTableViewController.m in Sources */,
 				DABFBBEC1C982B6D00EFD120 /* NewTableViewController.m in Sources */,
+				DAA099B41C9C22DD0034737C /* DepotModel.m in Sources */,
 				DABFBBFE1C982BF500EFD120 /* DetailsTableViewCell.m in Sources */,
 				DABFBBF21C982B9600EFD120 /* PicDetaTableViewController.m in Sources */,
 				DAA2DA781C99A0CE00A230EC /* PicTableViewCell.m in Sources */,
@@ -801,6 +851,10 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/乐旅/其他/PrefixHeader.pch";
 				INFOPLIST_FILE = "乐旅/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/乐旅/美食",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Jiangouren.--";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -814,6 +868,10 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/乐旅/其他/PrefixHeader.pch";
 				INFOPLIST_FILE = "乐旅/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/乐旅/美食",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Jiangouren.--";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
