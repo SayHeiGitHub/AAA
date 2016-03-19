@@ -24,124 +24,131 @@
 }
 
 //请求数据 按坐标
-//- (NSArray *)requestFoodWithLng:(NSString *)lng1 lat:(NSString *)lat1 page:(NSString *)page1{
-//    // 创建一个数组接收解析的数据
-//    NSMutableArray *array = [NSMutableArray array];
-//    //创建子线程来异步请求网络数据
-//     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-//         //初始化聚合数据引入 openidID
-//    [[JHOpenidSupplier shareSupplier] registerJuheAPIByOpenId:@"JH1a812182866ff3d71408678feaa48b74"];
-//         
-//             //按定位请求数据格式
-//             NSString *path = @"http://apis.juhe.cn/catering/query";
-//             NSString *api_id = @"45";
-//             NSString *method = @"GET";
-//             NSDictionary *param = @{@"lng":lng1,@"lat":lat1,@"page":page1, @"dtype":@"json",@"radius":@"5000"};
-//         
-//             JHAPISDK *juheapi = [JHAPISDK shareJHAPISDK];
-//         
-//             [juheapi executeWorkWithAPI:path
-//                                   APIID:api_id
-//                              Parameters:param
-//                                  Method:method
-//                                 Success:^(id responseObject){
-//                                     if ([[param objectForKey:@"dtype"] isEqualToString:@"xml"]) {
-//                                         NSLog(@"***xml*** \n %@", responseObject);
-//                                     }else{
-//                                         int error_code = [[responseObject objectForKey:@"error_code"] intValue];
-//                                          NSLog(@"***xml*** \n %@", responseObject);
-//                                         if (!error_code) {
-//         
-//                                            NSArray *arr = [[NSArray alloc]init];
-//                                             arr = responseObject[@"result"];
-//                                             for (NSDictionary *dict in arr) {
-//                                                 FoodModel *model = [[FoodModel alloc]init];
-//                                                 
-//                                                 [model setValuesForKeysWithDictionary:dict];
-//                                                 [array addObject:model];
-//                                             }
-//                                             if (self.delegate!=nil&&[self.delegate respondsToSelector:@selector(reloadViewWithData)]) {
-//                                                 [self.delegate reloadViewWithData];
-//                                             }
-//                                             
-//                                         }else{
-//                                             NSLog(@"FFFFF %@", responseObject);
-//                                         }
-//
-//                                         
-//                                     }
-//                                 } Failure:^(NSError *error) {
-//                                     NSLog(@"HHHHHH error:  %@",error.description);
-//                                 }];
-//         
-//     });
-//    return array;
-//}
+- (void)requestFoodWithLng:(NSString *)lng1 lat:(NSString *)lat1 page:(NSString *)page1 success:(void(^)(NSArray * array))success{
+    // 创建一个数组接收解析的数据
+    NSMutableArray *array = [NSMutableArray array];
+    //创建子线程来异步请求网络数据
+     dispatch_async(dispatch_get_global_queue(0, 0), ^{
+         //初始化聚合数据引入 openidID
+    [[JHOpenidSupplier shareSupplier] registerJuheAPIByOpenId:@"JH1a812182866ff3d71408678feaa48b74"];
+         
+             //按定位请求数据格式
+             NSString *path = @"http://apis.juhe.cn/catering/query";
+             NSString *api_id = @"45";
+             NSString *method = @"GET";
+             NSDictionary *param = @{@"lng":lng1,@"lat":lat1,@"page":page1, @"dtype":@"json",@"radius":@"5000"};
+         
+             JHAPISDK *juheapi = [JHAPISDK shareJHAPISDK];
+         
+             [juheapi executeWorkWithAPI:path
+                                   APIID:api_id
+                              Parameters:param
+                                  Method:method
+                                 Success:^(id responseObject){
+                                     if ([[param objectForKey:@"dtype"] isEqualToString:@"xml"]) {
+                                         NSLog(@"***xml*** \n %@", responseObject);
+                                     }else{
+                                         int error_code = [[responseObject objectForKey:@"error_code"] intValue];
+                                          NSLog(@"***xml*** \n %@", responseObject);
+                                         if (!error_code) {
+         
+                                            NSArray *arr = [[NSArray alloc]init];
+                                             arr = responseObject[@"result"];
+                                             for (NSDictionary *dict in arr) {
+                                                 FoodModel *model = [[FoodModel alloc]init];
+                                                 
+                                                 [model setValuesForKeysWithDictionary:dict];
+                                                 [array addObject:model];
+                                             }
+                                             dispatch_async(dispatch_get_main_queue(), ^{
+                                                 success(array);
+                                             });
+                                             
+                                             if (self.delegate!=nil&&[self.delegate respondsToSelector:@selector(reloadViewWithData)]) {
+                                                 [self.delegate reloadViewWithData];
+                                             }
+                                             
+                                         }else{
+                                             NSLog(@"FFFFF %@", responseObject);
+                                         }
+
+                                         
+                                     }
+                                 } Failure:^(NSError *error) {
+                                     NSLog(@"HHHHHH error:  %@",error.description);
+                                 }];
+         
+     });
+
+}
 
 //请求数据 按城市
-//- (NSArray *)foodRequestWithCity:(NSString *)city1 page:(NSString *)page1{
-//    // 创建一个数组接收解析的数据
-//    NSMutableArray *array = [NSMutableArray array];
-//    //创建子线程来异步请求网络数据
-//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-//        //初始化聚合数据引入 openidID
-//        [[JHOpenidSupplier shareSupplier] registerJuheAPIByOpenId:@"JH1a812182866ff3d71408678feaa48b74"];
-//                      
-//        NSString *path = @"http://apis.juhe.cn/catering/querybycity";
-//        NSString *api_id = @"45";
-//        NSString *method = @"GET";
-//        NSDictionary *param = @{@"city":city1,@"pagesize":@"20", @"dtype":@"JSON",@"page":page1};
-//        JHAPISDK *juheapi = [JHAPISDK shareJHAPISDK];
-//        
-//        [juheapi executeWorkWithAPI:path
-//                APIID:api_id
-//                Parameters:param
-//                Method:method
-//                Success:^(id responseObject){
-//                if ([[param objectForKey:@"dtype"] isEqualToString:@"xml"]) {
-//                NSLog(@"***xml*** \n %@", responseObject);
-//                }else{
-//                int error_code = [[responseObject objectForKey:@"error_code"] intValue];
-//                if (!error_code) {
-//           //JSON格式请求下的数据
-////                NSLog(@"!!!!!! %@", responseObject);
-//               NSArray *arr = [[NSArray alloc]init];
-//                    //判断是否存在输入的城市
-//                    id obj = [responseObject objectForKey:@"result"];
-//                    //如果不存在要查找的城市
-//                    if ([obj isEqual:[NSNull null]]) {
-//                        
-//                        FoodModel *model = [[FoodModel alloc]init];
-//                        [model setValue:@"你是不是傻" forKey:@"name"];
-//                        [array addObject:model];
-//                      
-//                    }
-//                    //如果存在
-//                    else{
-//               arr = responseObject[@"result"];
-//            for (NSDictionary *dict in arr) {
-//            FoodModel *model = [[FoodModel alloc]init];
-//            [model setValuesForKeysWithDictionary:dict];
-//                [array addObject:model];
-//            }
-//
-//            }
-//                    }
-//            if (self.delegate!=nil&&[self.delegate respondsToSelector:@selector(reloadViewWithData)]) {
-//                        [self.delegate reloadViewWithData];
-//                
-//            }else{
-//            NSLog(@"FFFFF %@", responseObject);
-//            }
-//            }
-//            } Failure:^(NSError *error) {
-//            NSLog(@"HHHHHH error:  %@",error.description);
-//            }];
-//        
-//        
-//           });
-//    return array;
-//}
+- (void)foodRequestWithCity:(NSString *)city1 page:(NSString *)page1 success:(void(^)(NSArray * array))success{
+    // 创建一个数组接收解析的数据
+    NSMutableArray *array = [NSMutableArray array];
+    //创建子线程来异步请求网络数据
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        //初始化聚合数据引入 openidID
+        [[JHOpenidSupplier shareSupplier] registerJuheAPIByOpenId:@"JH1a812182866ff3d71408678feaa48b74"];
+                      
+        NSString *path = @"http://apis.juhe.cn/catering/querybycity";
+        NSString *api_id = @"45";
+        NSString *method = @"GET";
+        NSDictionary *param = @{@"city":city1,@"pagesize":@"20", @"dtype":@"JSON",@"page":page1};
+        JHAPISDK *juheapi = [JHAPISDK shareJHAPISDK];
+        
+        [juheapi executeWorkWithAPI:path
+                APIID:api_id
+                Parameters:param
+                Method:method
+                Success:^(id responseObject){
+                if ([[param objectForKey:@"dtype"] isEqualToString:@"xml"]) {
+                NSLog(@"***xml*** \n %@", responseObject);
+                }else{
+                int error_code = [[responseObject objectForKey:@"error_code"] intValue];
+                if (!error_code) {
+           //JSON格式请求下的数据
+//                NSLog(@"!!!!!! %@", responseObject);
+               NSArray *arr = [[NSArray alloc]init];
+                    //判断是否存在输入的城市
+                    id obj = [responseObject objectForKey:@"result"];
+                    //如果不存在要查找的城市
+                    if ([obj isEqual:[NSNull null]]) {
+                        
+                        FoodModel *model = [[FoodModel alloc]init];
+                        [model setValue:@"你是不是傻" forKey:@"name"];
+                        [array addObject:model];
+                      
+                    }
+                    //如果存在
+                    else{
+               arr = responseObject[@"result"];
+            for (NSDictionary *dict in arr) {
+            FoodModel *model = [[FoodModel alloc]init];
+            [model setValuesForKeysWithDictionary:dict];
+                [array addObject:model];
+            }
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            success(array);
+                        });
+
+            }
+                    }
+            if (self.delegate!=nil&&[self.delegate respondsToSelector:@selector(reloadViewWithData)]) {
+                        [self.delegate reloadViewWithData];
+                
+            }else{
+            NSLog(@"FFFFF %@", responseObject);
+            }
+            }
+            } Failure:^(NSError *error) {
+            NSLog(@"HHHHHH error:  %@",error.description);
+            }];
+        
+        
+           });
+
+}
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -175,8 +182,6 @@
                         Method:method
                         Success:^(id responseObject){
                                         if ([[param objectForKey:@"dtype"] isEqualToString:@"xml"]) {
-                                            
-                                            
 //                                            NSLog(@"***xml*** \n %@", responseObject);
                                         }else{
                                             int error_code = [[responseObject objectForKey:@"error_code"] intValue];
@@ -223,9 +228,6 @@
                                                                                     success(array);
                                                                                     
                                                                                 });
-//                                                                                [array addObject:model];
-//                                                                            NSLog(@"eeeeeeeee%@",array);
-                                                                                
                                                                                 if (self.delegate!=nil&&[self.delegate respondsToSelector:@selector(reloadViewWithData)]) {
                                                                                     [self.delegate reloadViewWithData];
                                                                                 }
@@ -236,33 +238,18 @@
                                                                 }
 
                                                                 Failure:^(NSError *error) {
-//                                                                    NSLog(@"HHHHHH error:  %@",error.description);
+
                                                                 }];
-                                   
-                                  
-                                                                           }
-//                                                if (self.delegate!=nil&&[self.delegate respondsToSelector:@selector(reloadViewWithData)]) {
-//                                                    [self.delegate reloadViewWithData];
-//                                                }
-//                                               JSON格式请求下的数据
-//                                                NSLog(@"!!!!!! %@", responseObject);
+  
+                                                    }
 
                                             } else{
-//                                                NSLog(@"FFFFF %@", responseObject);
+
                                             }
                                         }
                                     } Failure:^(NSError *error) {
-                                        NSLog(@"HHHHHH error:  %@",error.description);
+  
                                     }];
-       
-            
-//        });
-      
-   
 
     }
-
-
-
-
 @end

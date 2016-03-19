@@ -21,10 +21,10 @@
 + (FoodRequest *)shareFoodRequest;
 
 //请求数据 按坐标
-- (NSArray *)requestFoodWithLng:(NSString *)lng1 lat:(NSString *)lat1 page:(NSString *)page1;
+- (void)requestFoodWithLng:(NSString *)lng1 lat:(NSString *)lat1 page:(NSString *)page1 success:(void(^)(NSArray * array))success;
 
 //请求数据 按城市
-- (NSArray *)foodRequestWithCity:(NSString *)city1 page:(NSString *)page1;
+- (void)foodRequestWithCity:(NSString *)city1 page:(NSString *)page1 success:(void(^)(NSArray * array))success;
 
 //根据坐标获取停车场数据
 - (void)requestDepotWithLng:(NSString *)lng1 lat:(NSString *)lat1 success:(void(^)(NSArray * array))success;

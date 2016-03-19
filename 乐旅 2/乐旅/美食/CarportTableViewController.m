@@ -30,9 +30,9 @@
     self.navigationItem.rightBarButtonItem = right;
     self.reqest = [FoodRequest shareFoodRequest];
     self.reqest.delegate = self;
-    //
     
-    [self makeData];
+    
+    //[self makeData];
  
 
 }

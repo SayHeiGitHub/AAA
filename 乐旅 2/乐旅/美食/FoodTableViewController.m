@@ -9,15 +9,17 @@
 #import "FoodTableViewController.h"
 #import "FoodTableViewCell.h"
 #import "CarportTableViewController.h"
-@interface FoodTableViewController ()
-
+#import "FoodRequest.h"
+#import "FoodModel.h"
+@interface FoodTableViewController ()<FootRequestDalegate>
+@property(nonatomic,strong)NSMutableArray *arr;
 @end
 
 @implementation FoodTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor redColor];
+
      self.navigationItem.title = @"美食";
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
     
@@ -28,8 +30,28 @@
     
     UIBarButtonItem *right = [[UIBarButtonItem alloc]initWithTitle:@"车库" style:UIBarButtonItemStylePlain target:self action:@selector(rightAction:)];
     self.navigationItem.rightBarButtonItem = right;
+    FoodRequest *request = [FoodRequest shareFoodRequest];
+    request.delegate = self;
     
     
+     [request foodRequestWithCity:@"北京" page:@"2" success:^(NSArray *array) {
+         [self.arr removeAllObjects];
+         [self.arr addObjectsFromArray:array];
+    }];
+}
+// 代理方法 回到主 线程 刷新
+- (void)reloadViewWithData{
+    __weak typeof(self) weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [weakSelf.tableView reloadData];
+    });
+}
+
+-(NSMutableArray *)arr{
+    if (!_arr) {
+        _arr  = [NSMutableArray array];
+    }
+    return  _arr;
 }
 - (void)loadNewData{
     [self.tableView reloadData];
@@ -61,7 +83,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return 20;
+    return self.arr.count;
 }
 
 
@@ -71,8 +93,10 @@
     if (!cell) {
         cell = [[FoodTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell_id];
     }
-    
-  cell.FoodName.text =@"afdjhkj";
+    FoodModel *model = [[FoodModel alloc]init];
+    model = self.arr[indexPath.row];
+    cell.FoodName.text = model.name;
+    [cell.FoodImage sd_setImageWithURL:[NSURL URLWithString:model.photos]];
     
     return cell;
 }
