@@ -23,4 +23,10 @@
 @property(nonatomic,strong)NSString *recommended_dishes;//推荐菜色
 @property(nonatomic,strong)NSString *nearby_shops;//周边美食
 @property(nonatomic,strong)NSString *service_rating;//服务评分
+@property(nonatomic,strong)NSString *tags; //温馨提示
+@property(nonatomic,assign)int  very_good_remarks;//非常好评人数
+@property(nonatomic,assign)int good_remarks;//好评人数
+@property(nonatomic,assign)int  bad_remarks;//差评
+@property(nonatomic,assign)int very_bad_remarks;//特别差评
+@property(nonatomic,assign)int common_remarks;//一般评论
 @end

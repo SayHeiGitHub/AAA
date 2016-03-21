@@ -32,7 +32,7 @@
     self.reqest.delegate = self;
     
     
-    //[self makeData];
+    [self makeData];
  
 
 }
