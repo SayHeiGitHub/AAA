@@ -8,6 +8,7 @@
 
 #import "BreakImageViewCell.h"
 
+static CGSize size;
 @implementation BreakImageViewCell
 
 
@@ -20,56 +21,69 @@
 }
 
 -(void)allViews{
-    self.userImageView =[[UIImageView alloc]init];
-    self.userImageView.backgroundColor = [UIColor redColor];
-    self.userName = [[UILabel alloc]init];
-    self.userName.backgroundColor = [UIColor greenColor];
-    self.userContentLabel = [[UILabel alloc]init];
-    self.userContentLabel.backgroundColor = [UIColor yellowColor];
-    self.userContentView = [[UIImageView alloc]init];
-    self.userContentView .backgroundColor = [UIColor purpleColor];
-    self.userView = [[UIView alloc]init];
-    self.userView.backgroundColor =[ UIColor redColor];
-     [self.contentView addSubview:self.userView];
-    [self.contentView addSubview:self.userContentView];
-    [self.contentView addSubview:self.userImageView];
-    [self.contentView addSubview:self.userName];
+    size = [UIScreen mainScreen].bounds.size;
+    //userView
+    self.userView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, size.width, 60)];
+   
+    [self.contentView addSubview:self.userView];
+    //给自己添加背景图片
+    //userImage
+    self.userImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 40, 40)];
+    self.userImageView.layer.masksToBounds = YES;
+    self.userImageView.layer.cornerRadius = 20;
+    self.userImageView.userInteractionEnabled = YES;
+    [self.userView addSubview:self.userImageView];
+    //userLable
+    self.userName = [[UILabel alloc] initWithFrame:CGRectMake(60, 10, 200, 40)];
+    self.userName.font = [UIFont fontWithName:@"ArialMT" size:19];
+    [self.userView addSubview:self.userName];
+//    //type
+//    self.type = [[UILabel alloc] initWithFrame:CGRectMake(size.width-70, 10, 60, 40)];
+//    self.type.font = [UIFont systemFontOfSize:15];
+//    [self.userView addSubview:self.type];
+    
+    //content
+    self.userContentLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 60, size.width-20, 275)];
+    self.userContentLabel.numberOfLines = 0;
     [self.contentView addSubview:self.userContentLabel];
-    
-    self.userImageView.sd_layout.widthIs(50).heightIs(50).topSpaceToView(self.contentView,10).leftSpaceToView(self.contentView ,10);
-    self.userImageView.sd_cornerRadiusFromHeightRatio = @(0.5);
-    self.userName.sd_layout.topEqualToView(self.userImageView) .leftSpaceToView(self.userImageView,10).rightSpaceToView(self.contentView,10).heightRatioToView(self.userImageView,0.4);
-    self.userContentLabel.sd_layout.topSpaceToView(self.userName ,10).rightSpaceToView(self.contentView,10).leftEqualToView(self.userName).bottomSpaceToView(self.contentView,10).autoHeightRatio(0);
-    // 内容的视图
-    self.userContentView.sd_layout.leftEqualToView(self.userContentLabel).rightEqualToView(self.userContentLabel).topSpaceToView(self.userContentLabel,5).bottomSpaceToView(self.contentView,50);
-    
-    
-    
-    self.userView.sd_layout.bottomSpaceToView(self.contentView,5).leftSpaceToView(self.contentView,25).rightSpaceToView(self.contentView,10).heightIs(40);
-    
-    // 笑脸
-    self.smileBtn = [[UIButton alloc]init];
-    self.smileBtn.backgroundColor = [UIColor yellowColor];
-    [self.userView addSubview:self.smileBtn];
-    self.smileBtn.sd_layout.topSpaceToView(self.userView,3).leftSpaceToView(self.userView,5).bottomSpaceToView(self.userView,3).widthIs(40);
-    //哭脸
-    self.cryBtn = [[UIButton alloc]init];
-    self.cryBtn.backgroundColor = [UIColor greenColor];
-    [self.userView addSubview:self.cryBtn];
-    self.cryBtn.sd_layout.topEqualToView(self.smileBtn).leftSpaceToView(self.smileBtn,15).bottomEqualToView(self.smileBtn).widthIs(40);
-    // 评论
-    self.commemtBtn = [[UIButton alloc]init];
-    self.commemtBtn.backgroundColor= [UIColor purpleColor];
-    [self.userView addSubview:self.commemtBtn];
-    self.commemtBtn.sd_layout.topEqualToView(self.cryBtn).leftSpaceToView(self.cryBtn,15).widthIs(40).bottomEqualToView(self.cryBtn);
-    // 分享
-    self.shareBtn = [[UIButton alloc]init];
-    self.shareBtn.backgroundColor = [UIColor blackColor];
-    [self.userView addSubview:self.shareBtn];
-      [self.shareBtn setTitle:@"分享" forState:UIControlStateNormal];
-    self.shareBtn.sd_layout.rightSpaceToView(self.userView,10).topEqualToView(self.cryBtn).bottomEqualToView(self.cryBtn).widthIs(40);
-    [self setupAutoHeightWithBottomView:self.contentView bottomMargin:10];
+    //smileBtn
+    self.smileBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.smileBtn.frame = CGRectMake(10, self.userContentLabel.frame.size.height+90, 20, 20);
+    [self.smileBtn setBackgroundImage:[UIImage imageNamed:@"icon_for_enable@2x"] forState:UIControlStateNormal];
+    [self.contentView addSubview:self.smileBtn];
+    //cryBtn
+    self.cryBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.cryBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    [self.cryBtn setBackgroundImage:[UIImage imageNamed:@"icon_against_enable@2x"] forState:UIControlStateNormal];
+    self.cryBtn.frame = CGRectMake(70, self.userContentLabel.frame.size.height+90, 20, 20);
+    [self.contentView addSubview:self.cryBtn];
+    //commentBtn
+    self.commemtBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.commemtBtn.frame = CGRectMake(130, self.userContentLabel.frame.size.height+90, 20, 20);
+    [self.commemtBtn setBackgroundImage:[UIImage imageNamed:@"icon_comment@2x.png"] forState:UIControlStateNormal];
+    [self.contentView addSubview:self.commemtBtn];
+    //shareBtn
+    self.shareBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.shareBtn.frame = CGRectMake(size.width-35, self.userContentLabel.frame.size.height+90, 20, 20);
+    [self.shareBtn setBackgroundImage:[UIImage imageNamed:@"icon_share@2x"] forState:UIControlStateNormal];
+    [self.contentView addSubview:self.shareBtn];
+    //aaaa
+    self.aaaa = [[UIImageView alloc] initWithFrame:CGRectMake(25, CGRectGetMaxY(self.userContentLabel.frame), 325, 325)];
+    self.aaaa.userInteractionEnabled = YES;
+    [self.contentView addSubview:self.aaaa];
+    //smileNum
+    self.smileNum = [[UILabel alloc] initWithFrame:CGRectMake(5, CGRectGetMinY(self.shareBtn.frame)-5, 300, 10)];
+    self.smileNum.font = [UIFont systemFontOfSize:10];
+    [self.contentView addSubview:self.smileNum];
 }
++(CGFloat)heightForLableText:(NSString *)text{
+    
+    CGSize size = CGSizeMake(300,1000);
+    NSDictionary *dic = @{NSFontAttributeName:[UIFont systemFontOfSize:20]};
+    CGRect rect = [text boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil];
+    return rect.size.height;
+}
+
 - (void)awakeFromNib {
     
 }

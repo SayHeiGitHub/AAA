@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5A24B273D79A192FF9C82E22 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A2B6C752B03F224A6B9A60F9 /* libPods.a */; };
+		DA9378A81C9FF5E4002B2C3B /* BreakModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DA9378A71C9FF5E4002B2C3B /* BreakModel.m */; };
+		DA9378AB1CA00EEC002B2C3B /* DateHandel.m in Sources */ = {isa = PBXBuildFile; fileRef = DA9378AA1CA00EEC002B2C3B /* DateHandel.m */; };
 		DAA0999B1C9B87CF0034737C /* NewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA0999A1C9B87CF0034737C /* NewTableViewCell.m */; };
 		DAA0999E1C9BD7010034737C /* CarportTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA0999D1C9BD7010034737C /* CarportTableViewController.m */; };
 		DAA099AA1C9BE40C0034737C /* CarportTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA099A81C9BE40C0034737C /* CarportTableViewCell.m */; };
@@ -66,6 +68,10 @@
 /* Begin PBXFileReference section */
 		8EE812DF006AE51CB27903EC /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A2B6C752B03F224A6B9A60F9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA9378A61C9FF5E4002B2C3B /* BreakModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BreakModel.h; sourceTree = "<group>"; };
+		DA9378A71C9FF5E4002B2C3B /* BreakModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BreakModel.m; sourceTree = "<group>"; };
+		DA9378A91CA00EEC002B2C3B /* DateHandel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateHandel.h; sourceTree = "<group>"; };
+		DA9378AA1CA00EEC002B2C3B /* DateHandel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateHandel.m; sourceTree = "<group>"; };
 		DAA099991C9B87CF0034737C /* NewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewTableViewCell.h; sourceTree = "<group>"; };
 		DAA0999A1C9B87CF0034737C /* NewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewTableViewCell.m; sourceTree = "<group>"; };
 		DAA0999C1C9BD7010034737C /* CarportTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarportTableViewController.h; sourceTree = "<group>"; };
@@ -171,6 +177,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DA93785A1C9F84ED002B2C3B /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				DA9378A61C9FF5E4002B2C3B /* BreakModel.h */,
+				DA9378A71C9FF5E4002B2C3B /* BreakModel.m */,
+				DA9378A91CA00EEC002B2C3B /* DateHandel.h */,
+				DA9378AA1CA00EEC002B2C3B /* DateHandel.m */,
+			);
+			name = Tools;
+			sourceTree = "<group>";
+		};
 		DAA0999F1C9BD7130034737C /* 车库 */ = {
 			isa = PBXGroup;
 			children = (
@@ -551,6 +568,7 @@
 				DABFBBDA1C982A6A00EFD120 /* M */,
 				DABFBBDB1C982A6A00EFD120 /* V */,
 				DABFBBDC1C982A6A00EFD120 /* 详情面 */,
+				DA93785A1C9F84ED002B2C3B /* Tools */,
 			);
 			path = "段子";
 			sourceTree = "<group>";
@@ -833,6 +851,8 @@
 				DABFBBFB1C982BEB00EFD120 /* DetailsTableViewController.m in Sources */,
 				DABFBBEC1C982B6D00EFD120 /* NewTableViewController.m in Sources */,
 				DAA099B41C9C22DD0034737C /* DepotModel.m in Sources */,
+				DA9378A81C9FF5E4002B2C3B /* BreakModel.m in Sources */,
+				DA9378AB1CA00EEC002B2C3B /* DateHandel.m in Sources */,
 				DABFBBFE1C982BF500EFD120 /* DetailsTableViewCell.m in Sources */,
 				DABFBBF21C982B9600EFD120 /* PicDetaTableViewController.m in Sources */,
 				DAA2DA781C99A0CE00A230EC /* PicTableViewCell.m in Sources */,

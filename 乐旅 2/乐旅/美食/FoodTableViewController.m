@@ -33,8 +33,8 @@
     
     FoodRequest *request = [FoodRequest shareFoodRequest];
     request.delegate = self;
-    
-
+  
+ 
      [request foodRequestWithCity:@"北京" page:@"2" success:^(NSArray *array) {
          [self.arr removeAllObjects];
          [self.arr addObjectsFromArray:array];

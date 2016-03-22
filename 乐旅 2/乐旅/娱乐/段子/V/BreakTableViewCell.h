@@ -24,6 +24,6 @@
 @property(nonatomic,strong)UIButton *cryBtn; //哭按钮
 @property(nonatomic,strong)UIButton *shareBtn; // 分享按钮
 @property(nonatomic,strong)UIButton *commemtBtn; //评论
-
-
+@property(nonatomic,strong)UILabel *smileNum;
++(CGFloat)heightForLableText:(NSString *)text;
 @end

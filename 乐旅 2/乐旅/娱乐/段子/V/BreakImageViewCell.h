@@ -22,11 +22,12 @@
 
 @property(nonatomic,strong)UIView *userView; // 小图集合
 
-
+@property(nonatomic,strong)UIImageView *aaaa;
 @property(nonatomic,strong)UIButton *smileBtn; // 微笑按钮
 @property(nonatomic,strong)UIButton *cryBtn; //哭按钮
 @property(nonatomic,strong)UIButton *shareBtn; // 分享按钮
 @property(nonatomic,strong)UIButton *commemtBtn; //评论
-
+@property(nonatomic,strong)UILabel *smileNum;
++(CGFloat)heightForLableText:(NSString *)text;
 
 @end
