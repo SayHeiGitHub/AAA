@@ -113,6 +113,8 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     FoodDetailTableViewController *foodVC = [[FoodDetailTableViewController alloc]init];
+
+    
     FoodModel *model1 = [[FoodModel alloc]init];
     model1 = self.arr[indexPath.row];
     foodVC.nameLab = model1.name;
