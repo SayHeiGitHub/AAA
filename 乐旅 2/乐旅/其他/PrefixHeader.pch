@@ -16,7 +16,7 @@
 #import <AFNetworking.h>
 #define KWindowWidth [UIScreen mainScreen].bounds.size.width
 #define KWindowHeight [UIScreen mainScreen].bounds.size.height
-
+#define kFrameRequestUrl @"http://c.3g.163.com/nc/video/home/01-10.html"
 #import "MJRefresh.h"
 
 // Include any system framework and library headers here that should be included in all compilation units.
