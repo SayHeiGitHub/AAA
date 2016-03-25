@@ -32,7 +32,7 @@
 
 
 - (void)getDataWithStr:(NSString *)str Block:(Block)block{
-    
+//        __weak typeof(self)weakSelf = self;
     AFHTTPSessionManager  *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     NSMutableArray *arrr = [NSMutableArray array];
@@ -40,11 +40,17 @@
         NSArray *arr = responseObject[@"items"];
         for (NSDictionary *d in arr) {
             //将字典通过KVC转化成model
+
             BreakModel *model = [[BreakModel alloc] init];
             [model setValuesForKeysWithDictionary:d];
             [arrr addObject:model];
 
         }
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            //刷新数据
+//            weakSelf.reloadDataBlock();
+//            
+//        });
         block(arrr);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"%@",error);

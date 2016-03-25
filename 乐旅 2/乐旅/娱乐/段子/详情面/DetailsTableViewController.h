@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "BreakModel.h"
 @interface DetailsTableViewController : UITableViewController
-
+@property(nonatomic,strong)BreakModel *model;
+//数组用于存放数据
+@property(nonatomic,strong)NSMutableArray *array;
 @end

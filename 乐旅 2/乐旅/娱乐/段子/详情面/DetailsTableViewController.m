@@ -8,8 +8,10 @@
 
 #import "DetailsTableViewController.h"
 #import "DetailsTableViewCell.h"
+#import "DateHandel.h"
+#import "BreakTableViewCell.h"
 @interface DetailsTableViewController ()
-
+@property(nonatomic,strong)DateHandel *dateHandel;
 @end
 
 @implementation DetailsTableViewController
@@ -17,11 +19,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
+    NSString *url = [NSString stringWithFormat:@"http://m2.qiushibaike.com/article/%@/comments?article=1&count=50&page=%d&AdID=145724230300957212CC3B",self.model.Id,1];
+    //数组存放数据
+    [[DateHandel sharedDataHandle]getDataWithStr:url Block:^(NSMutableArray *array) {
+        self.array = array;
+        
+        [self.tableView reloadData];
+    }];
+//   self.navigationItem.title = [NSString stringWithFormat:@"%@",self.model.user[@"login"]];
+    self.navigationItem.title = [NSString stringWithFormat:@"%@",self.model.Id];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,26 +46,84 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return 10;
+    return self.array.count + 1;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    if (indexPath.row == 0) {
+        static NSString *cell_id = @"cell";
+        BreakTableViewCell*cell = [tableView dequeueReusableCellWithIdentifier:cell_id];
+        if (!cell) {
+            cell = [[BreakTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell_id];
+        }
+       
+        cell.userContentLabel.text =self.model.content;
+        cell.userName.text = self.model.user[@"login"];
+              NSString *a = nil;
+        if (self.model.Id!=NULL) {
+            a = [NSString stringWithFormat:@"%@",self.model.user[@"id"]];
+            a = [a substringToIndex:4];
+        }
+        NSString *str = [NSString stringWithFormat:@"http://pic.qiushibaike.com/system/avtnew/%@/%@/medium/%@",a,self.model.user[@"id"],self.model.user[@"icon"]];
+        [cell.userImageView sd_setImageWithURL:[NSURL URLWithString:str]];
 
-    static NSString *cell_id = @"cell";
-     DetailsTableViewCell*cell = [tableView dequeueReusableCellWithIdentifier:cell_id];
-    if (!cell) {
-        cell = [[DetailsTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell_id];
+        //通过反回的rect设置lable的高度
+        //获取lable的高度(获取frame)
+        CGRect labelFrame = cell.userContentLabel.frame;
+        //修改获取到得frame;
+        labelFrame.size.height = [BreakTableViewCell heightForLableText:cell.userContentLabel.text];
+        //再将修改之后的frame赋值给lable
+        cell.userContentLabel.frame = labelFrame;
+        //改变其他的frame
+        [cell changeOtherBtn:cell.userContentLabel.frame];
+        [cell setSelected:NO animated:NO];
+        [cell setHighlighted:NO animated:NO];
+        
+         return cell;
+    }else{
+        static NSString *cell_3 = @"cell_3";
+        DetailsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cell_3];
+        if (!cell) {
+            cell = [[DetailsTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cell_3];
+        }
+        BreakModel *model = self.array[indexPath.row-1];
+
+        cell.userContentLabel.text = model.content;
+        cell.userName.text = model.user[@"login"];
+        NSString *a = nil;
+        if (model.Id!=NULL) {
+            a = [NSString stringWithFormat:@"%@",model.user[@"id"]];
+            a = [a substringToIndex:4];
+        }
+        NSString *str = [NSString stringWithFormat:@"http://pic.qiushibaike.com/system/avtnew/%@/%@/medium/%@",a,model.user[@"id"],model.user[@"icon"]];
+        [cell.userImageView sd_setImageWithURL:[NSURL URLWithString:str]];
+        cell.floor.text = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
+        //通过反回的rect设置lable的高度
+        //获取lable的高度(获取frame)
+        CGRect labelFrame = cell.userContentLabel.frame;
+        //修改获取到得frame;
+        labelFrame.size.height = [DetailsTableViewCell heightForLableText:cell.userContentLabel.text];
+        //再将修改之后的frame赋值给lable
+        cell.userContentLabel.frame = labelFrame;
+        //改变其他的frame
+        [cell changeOtherBtn:cell.userContentLabel.frame];
+       return cell;
+
     }
-    cell.userContentLabel.text = @"撒发生来哈第三方合计会尽快会尽快会尽快会尽快  会尽快和环境和进口会尽快离开回家后即可很快会尽快汇款市的减肥";
-    return cell;
-
+    
 }
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 150;
+    if (indexPath.row == 0) {
+     return [BreakTableViewCell heightForLableText:self.model.content]+110;
+
+    }else{
+        BreakModel *model = self.array[indexPath.row-1];
+        return [DetailsTableViewCell heightForLableText:model.content]+70;
+
+    }
 }
 
 @end

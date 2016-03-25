@@ -49,7 +49,18 @@
     [self.contentView addSubview:self.time];
     self.time.sd_layout.leftEqualToView(self.userContentLabel).bottomSpaceToView(self.contentView,10).topSpaceToView(self.userContentLabel,10).widthIs(60);
 }
-
++(CGFloat)heightForLableText:(NSString *)text{
+    
+    CGSize size = CGSizeMake(300,1000);
+    NSDictionary *dic = @{NSFontAttributeName:[UIFont systemFontOfSize:20]};
+    CGRect rect = [text boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil];
+    return rect.size.height;
+}
+-(void)changeOtherBtn:(CGRect)rect{
+    self.time.frame = CGRectMake(self.time.frame.origin.x, CGRectGetMaxY(rect)+15, self.time.frame.size.width, self.time.frame.size.height);
+//    self.admire.frame = CGRectMake(self.admire.frame.origin.x, CGRectGetMaxY(rect)+15, self.admire.frame.size.width, self.admire.frame.size.height);
+//    self.admireNum.frame = CGRectMake(self.admireNum.frame.origin.x, CGRectGetMaxY(rect)+15, self.admireNum.frame.size.width, self.admireNum.frame.size.height);
+}
 - (void)awakeFromNib {
     // Initialization code
 }

@@ -7,8 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+typedef void(^ReloadDataBlock)();
 typedef void(^Block)(NSMutableArray * array);
 @interface DateHandel : NSObject
+
+@property(nonatomic,strong)ReloadDataBlock reloadDataBlock;
 + (instancetype)sharedDataHandle;
 
 - (void)getDataWithStr:(NSString *)str Block:(Block)block;

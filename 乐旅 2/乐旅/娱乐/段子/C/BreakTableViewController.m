@@ -47,9 +47,7 @@ static  NSInteger a = 2;
 }
 
 -(void)loadMoreData{
-//    NSString *url = [NSString stringWithFormat:@"http://m2.qiushibaike.com/article/list/latest?count=30&page=%ld&AdID=145682018775107212CC3B",a];
     NSString *url = [NSString stringWithFormat:@"http://m2.qiushibaike.com/article/list/text?count=30&page=%ld&AdID=145682018775107212CC3B",a];
-
     a=a+1;
     [[DateHandel sharedDataHandle]getDataWithStr:url Block:^(NSMutableArray *array) {
     
@@ -130,13 +128,17 @@ static  NSInteger a = 2;
 }
 // 点击cell 跳转页面
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+      [tableView deselectRowAtIndexPath:indexPath animated:NO];//取消选中
+     BreakModel *model = self.arr[indexPath.row];
     DetailsTableViewController *DTVC = [[DetailsTableViewController alloc ]init];
-    
+//    DTVC.model = [[BreakModel alloc] init];
+    DTVC.model = model;
+    DTVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:DTVC animated:YES];
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     BreakModel *model = self.arr[indexPath.row];
-    return [BreakTableViewCell heightForLableText:model.content]+115;
+    return [BreakTableViewCell heightForLableText:model.content]+110;
 
 }
 @end

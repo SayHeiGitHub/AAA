@@ -14,4 +14,7 @@
 @property(nonatomic,strong)UILabel *floor;  //楼
 @property(nonatomic,strong)UILabel *userContentLabel; // 内容
 @property(nonatomic,strong)UILabel *time;  // 时间
+
++(CGFloat)heightForLableText:(NSString *)text;
+-(void)changeOtherBtn:(CGRect)rect;
 @end
