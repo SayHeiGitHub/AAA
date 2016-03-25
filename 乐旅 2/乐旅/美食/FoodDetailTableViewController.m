@@ -11,6 +11,8 @@
 #import "CarportTableViewController.h"
 #import "FoodModel.h"
 #import "FoodRequest.h"
+#import "UIView+SDAutoLayout.h"
+#import "UITableView+SDAutoTableViewCellHeight.h"
 @interface FoodDetailTableViewController ()<FootRequestDalegate>
 @property(nonatomic,strong)NSArray *arr1;
 @end
@@ -92,14 +94,17 @@
     //    cell.veryBad.text =self.veryBad;
     //    cell.service.text = self.service;
     //    cell.commonRemark.text=self.commonRemark;
-    [self.addressButton setTitle:self.address forState:UIControlStateNormal];
+    
+    [cell.addressButton setImage:[UIImage imageNamed:@"default_carReport_bubbleoffline"] forState:UIControlStateNormal];
+    NSString *str = [NSString stringWithFormat:@"%@",self.address];
+    [cell.addressButton setTitle:str forState:UIControlStateNormal];
     
 
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 700;
+    return 500;
 }
 
 

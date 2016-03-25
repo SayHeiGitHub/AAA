@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#define CGMMainScreenWidth            ([[UIScreen mainScreen] bounds].size.width)
+#define CGMMainScreenHeight           ([[UIScreen mainScreen] bounds].size.height)
 @interface FoodDetailTableViewCell : UITableViewCell
 @property(nonatomic,strong)UILabel *nameLab;//饭店名称
 @property(nonatomic,strong)UILabel *startLab;//星级
@@ -28,4 +29,5 @@
 @property(nonatomic,strong)UILabel *badRemark;//差评人数
 @property(nonatomic,strong)UILabel *veryBad;//非常差评
 @property(nonatomic,strong)UILabel *commonRemark;//一般评论人数
+@property(nonatomic,strong)UIButton *button;//分享
 @end
