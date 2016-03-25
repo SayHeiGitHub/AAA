@@ -12,6 +12,7 @@
 #import "BreakImageViewCell.h"
 #import "DateHandel.h"
 #import "BreakModel.h"
+#import "UIImageView+WebCache.h"
 static  NSInteger a = 2;
 @interface BreakTableViewController ()
 @property(nonatomic,strong)NSMutableArray *arr;
@@ -46,7 +47,9 @@ static  NSInteger a = 2;
 }
 
 -(void)loadMoreData{
-    NSString *url = [NSString stringWithFormat:@"http://m2.qiushibaike.com/article/list/latest?count=30&page=%ld&AdID=145682018775107212CC3B",a];
+//    NSString *url = [NSString stringWithFormat:@"http://m2.qiushibaike.com/article/list/latest?count=30&page=%ld&AdID=145682018775107212CC3B",a];
+    NSString *url = [NSString stringWithFormat:@"http://m2.qiushibaike.com/article/list/text?count=30&page=%ld&AdID=145682018775107212CC3B",a];
+
     a=a+1;
     [[DateHandel sharedDataHandle]getDataWithStr:url Block:^(NSMutableArray *array) {
     
@@ -88,64 +91,38 @@ static  NSInteger a = 2;
     
     return self.arr.count;
 }
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     BreakModel *model = self.arr[indexPath.row];
-    if (model.image == nil) {
-        static NSString *cell_id = @"cell";
-        BreakTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cell_id];
-        if (!cell) {
-            cell = [[BreakTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell_id];
-        }
-                cell.userContentLabel.text =model.content;
-                cell.userName.text = model.user[@"login"];
-                NSString *a = nil;
-                if (model.Id!=NULL) {
-                    a = [NSString stringWithFormat:@"%@",model.user[@"id"]];
-                    a = [a substringToIndex:4];
-                }
-                NSString *str = [NSString stringWithFormat:@"http://pic.qiushibaike.com/system/avtnew/%@/%@/medium/%@",a,model.user[@"id"],model.user[@"icon"]];
-                [cell.userImageView sd_setImageWithURL:[NSURL URLWithString:str]];
-                [cell.shareBtn addTarget:self action:@selector(shareBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-        //通过反回的rect设置lable的高度
-        //获取lable的高度(获取frame)
-        CGRect labelFrame = cell.userContentLabel.frame;
-        //修改获取到得frame;
-        labelFrame.size.height = [BreakTableViewCell heightForLableText:cell.userContentLabel.text];
-        //再将修改之后的frame赋值给lable
-        cell.userContentLabel.frame = labelFrame;
-
-                return cell;
-
-    }else{
-        static NSString *cell_id = @"cell";
-        BreakImageViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cell_id];
-        if (!cell) {
-            cell = [[BreakImageViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell_id];
-        }
-        cell.userContentLabel.text =model.content;
-        cell.userName.text = model.user[@"login"];
-        NSString *a = nil;
-        if (model.Id!=NULL) {
-            a = [NSString stringWithFormat:@"%@",model.user[@"id"]];
-            a = [a substringToIndex:4];
-        }
-        NSString *str = [NSString stringWithFormat:@"http://pic.qiushibaike.com/system/avtnew/%@/%@/medium/%@",a,model.user[@"id"],model.user[@"icon"]];
-        [cell.userImageView sd_setImageWithURL:[NSURL URLWithString:str]];
-        [cell.shareBtn addTarget:self action:@selector(shareBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-        //通过反回的rect设置lable的高度
-        //获取lable的高度(获取frame)
-        CGRect labelFrame = cell.userContentLabel.frame;
-        //修改获取到得frame;
-        labelFrame.size.height = [BreakTableViewCell heightForLableText:cell.userContentLabel.text];
-        //再将修改之后的frame赋值给lable
-        cell.userContentLabel.frame = labelFrame;
-
-        return cell;
-        }
+    static NSString *cell_i = @"cell_i";
+    BreakTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cell_i];
+    if (!cell) {
+        cell = [[BreakTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cell_i];
+    }
+//    [cell.smileBtn addTarget:self action:@selector(smileBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+//    [cell.cryBtn addTarget:self action:@selector(cryBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+//    [cell.commentBtn addTarget:self action:@selector(commentBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+//    [cell.shareBtn addTarget:self action:@selector(shareBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+                    cell.userContentLabel.text =model.content;
+                    cell.userName.text = model.user[@"login"];
+                    NSString *a = nil;
+                    if (model.Id!=NULL) {
+                        a = [NSString stringWithFormat:@"%@",model.user[@"id"]];
+                        a = [a substringToIndex:4];
+                    }
+                    NSString *str = [NSString stringWithFormat:@"http://pic.qiushibaike.com/system/avtnew/%@/%@/medium/%@",a,model.user[@"id"],model.user[@"icon"]];
+                    [cell.userImageView sd_setImageWithURL:[NSURL URLWithString:str]];
+                    [cell.shareBtn addTarget:self action:@selector(shareBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    //通过反回的rect设置lable的高度
+    //获取lable的高度(获取frame)
+    CGRect labelFrame = cell.userContentLabel.frame;
+    //修改获取到得frame;
+    labelFrame.size.height = [BreakTableViewCell heightForLableText:cell.userContentLabel.text];
+    //再将修改之后的frame赋值给lable
+    cell.userContentLabel.frame = labelFrame;
+    //改变其他的frame
+    [cell changeOtherBtn:cell.userContentLabel.frame];
+    
+    return cell;
 }
 // 分享按钮
 -(void)shareBtnAction:(UIButton *)sender{
@@ -159,15 +136,7 @@ static  NSInteger a = 2;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     BreakModel *model = self.arr[indexPath.row];
-    CGFloat t = 0;
-    if (model.image !=nil) {
-        t = [model.image_size[@"m"][1] integerValue]/[model.image_size[@"m"][0] integerValue];
-        
-        return [BreakImageViewCell heightForLableText:model.content]+325*t+145;
-    }else{
-        return [BreakTableViewCell heightForLableText:model.content]+115;
-    }
+    return [BreakTableViewCell heightForLableText:model.content]+115;
 
 }
-
 @end

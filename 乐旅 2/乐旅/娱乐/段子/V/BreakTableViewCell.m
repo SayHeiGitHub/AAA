@@ -90,4 +90,14 @@ static CGSize size;
 
    }
 
+//改变其他button的Frame
+-(void)changeOtherBtn:(CGRect)rect{
+    self.smileBtn.frame = CGRectMake(self.smileBtn.frame.origin.x, CGRectGetMaxY(rect)+25, self.smileBtn.frame.size.width, self.smileBtn.frame.size.height);
+    //smileNum
+    self.smileNum.frame =CGRectMake(self.smileNum.frame.origin.x, CGRectGetMaxY(rect)+10, self.smileNum.frame.size.width, self.smileNum.frame.size.height);
+    self.cryBtn.frame = CGRectMake(self.cryBtn.frame.origin.x, CGRectGetMaxY(rect)+25, self.cryBtn.frame.size.width, self.cryBtn.frame.size.height);
+    self.commemtBtn.frame = CGRectMake(self.commemtBtn.frame.origin.x, CGRectGetMaxY(rect)+25, self.commemtBtn.frame.size.width, self.commemtBtn.frame.size.height);
+    self.shareBtn.frame = CGRectMake(self.shareBtn.frame.origin.x, CGRectGetMaxY(rect)+25, self.shareBtn.frame.size.width, self.shareBtn.frame.size.height);
+
+}
 @end

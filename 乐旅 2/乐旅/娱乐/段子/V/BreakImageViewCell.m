@@ -68,9 +68,9 @@ static CGSize size;
     [self.shareBtn setBackgroundImage:[UIImage imageNamed:@"icon_share@2x"] forState:UIControlStateNormal];
     [self.contentView addSubview:self.shareBtn];
     //aaaa
-    self.aaaa = [[UIImageView alloc] initWithFrame:CGRectMake(25, CGRectGetMaxY(self.userContentLabel.frame), 325, 325)];
-    self.aaaa.userInteractionEnabled = YES;
-    [self.contentView addSubview:self.aaaa];
+//    self.userContentView = [[UIImageView alloc] initWithFrame:CGRectMake(25, CGRectGetMaxY(self.userContentLabel.frame), 325, 325)];
+//    self.userContentView.userInteractionEnabled = YES;
+//    [self.contentView addSubview:self.userContentView];
     //smileNum
     self.smileNum = [[UILabel alloc] initWithFrame:CGRectMake(5, CGRectGetMinY(self.shareBtn.frame)-5, 300, 10)];
     self.smileNum.font = [UIFont systemFontOfSize:10];
@@ -93,5 +93,14 @@ static CGSize size;
 
     // Configure the view for the selected state
 }
-
+//改变其他button的Frame
+-(void)changeOtherBtn:(CGRect)rect{
+    self.smileBtn.frame = CGRectMake(self.smileBtn.frame.origin.x, CGRectGetMaxY(rect)+25, self.smileBtn.frame.size.width, self.smileBtn.frame.size.height);
+    //smileNum
+    self.smileNum.frame =CGRectMake(self.smileNum.frame.origin.x, CGRectGetMaxY(rect)+10, self.smileNum.frame.size.width, self.smileNum.frame.size.height);
+    self.cryBtn.frame = CGRectMake(self.cryBtn.frame.origin.x, CGRectGetMaxY(rect)+25, self.cryBtn.frame.size.width, self.cryBtn.frame.size.height);
+    self.commemtBtn.frame = CGRectMake(self.commemtBtn.frame.origin.x, CGRectGetMaxY(rect)+25, self.commemtBtn.frame.size.width, self.commemtBtn.frame.size.height);
+    self.shareBtn.frame = CGRectMake(self.shareBtn.frame.origin.x, CGRectGetMaxY(rect)+25, self.shareBtn.frame.size.width, self.shareBtn.frame.size.height);
+    
+}
 @end

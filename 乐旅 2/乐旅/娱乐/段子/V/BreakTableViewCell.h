@@ -26,4 +26,8 @@
 @property(nonatomic,strong)UIButton *commemtBtn; //评论
 @property(nonatomic,strong)UILabel *smileNum;
 +(CGFloat)heightForLableText:(NSString *)text;
+
+
+//改变其他button的Frame
+-(void)changeOtherBtn:(CGRect)rect;
 @end

@@ -40,11 +40,10 @@
         NSArray *arr = responseObject[@"items"];
         for (NSDictionary *d in arr) {
             //将字典通过KVC转化成model
-//            NSLog(@"%@",d);
             BreakModel *model = [[BreakModel alloc] init];
             [model setValuesForKeysWithDictionary:d];
             [arrr addObject:model];
-           NSLog(@"*******%@",arrr);
+
         }
         block(arrr);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
