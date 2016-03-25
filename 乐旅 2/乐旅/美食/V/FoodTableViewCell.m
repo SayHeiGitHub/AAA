@@ -32,16 +32,17 @@
     [self.contentView addSubview:self.FoodName];
     [self.contentView addSubview:self.FoodImage];
     
-    self.FoodImage.sd_layout.topSpaceToView(self.contentView,10).leftSpaceToView(self.contentView,10).widthIs(80)
+    self.FoodImage.sd_layout.topSpaceToView(self.contentView,30).leftSpaceToView(self.contentView,10).widthIs(110)
     .heightIs(80);
     self.FoodName.font = [UIFont systemFontOfSize:20];
     self.FoodName.sd_layout.topEqualToView(self.FoodImage).leftSpaceToView(self.FoodImage,20).rightSpaceToView(self.contentView,10).heightIs(30);
-
+    
     self.staLab.sd_layout.leftEqualToView(self.FoodName).topSpaceToView(self.FoodName,20).widthIs(80).heightIs(30);
     self.avgLab.sd_layout.leftSpaceToView(self.staLab,20).topEqualToView(self.staLab).widthIs(100).heightIs(30);
     //饭店温馨提示
     self.tagsLab.numberOfLines = 0;
-    self.tagsLab.sd_layout.leftSpaceToView(self.contentView,10).topSpaceToView(self.FoodImage,10).rightSpaceToView(self.contentView,10).heightIs(40);
+    self.tagsLab.font = [UIFont systemFontOfSize:12];
+    self.tagsLab.sd_layout.leftSpaceToView(self.contentView,10).topSpaceToView(self.FoodImage,0).rightSpaceToView(self.contentView,10).heightIs(80);
 }
 
 - (void)awakeFromNib {

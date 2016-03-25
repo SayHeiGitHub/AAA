@@ -15,6 +15,6 @@
 @property(nonatomic,strong)UILabel *tagsLab;//饭店温馨提示
 @property(nonatomic,strong)UILabel *staLab;//星级
 @property(nonatomic,strong)UILabel *avgLab;//人均消费
-
+@property(nonatomic,strong)UIImageView *backImage;//整个背景图片
 
 @end
