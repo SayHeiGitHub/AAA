@@ -13,6 +13,7 @@
 #import "ModelTitle.h"
 #import "RecreationViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
+
 @interface VedioTableViewController ()<DateRequestDelegate>
 //请求网络存储数据
 @property (nonatomic,strong)NSMutableArray *array;
@@ -20,7 +21,6 @@
 @property (nonatomic,strong)shared *shar1;
 @property (nonatomic,strong)NSArray *addarray;
 @property (nonatomic,strong) MPMoviePlayerController *moviePlayer;
-
 /** 加载动画*/
 @property(nonatomic,strong) UIActivityIndicatorView *loadingAni;
 @end
@@ -63,6 +63,8 @@
             self.shar1.b=20;
         });
     }
+    
+    
     else
     {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -220,14 +222,14 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     
-    [self.loadingAni stopAnimating];
-    if (self.moviePlayer.playbackState==MPMoviePlaybackStatePlaying||self.moviePlayer.playbackState==MPMoviePlaybackStatePaused)
-    {
-        
-        [self.moviePlayer.view removeFromSuperview];
-        self.moviePlayer=nil;
-        
-    }
+//    [self.loadingAni stopAnimating];
+//    if (self.moviePlayer.playbackState==MPMoviePlaybackStatePlaying||self.moviePlayer.playbackState==MPMoviePlaybackStatePaused)
+//    {
+//        
+//        [self.moviePlayer.view removeFromSuperview];
+//        self.moviePlayer=nil;
+//        
+//    }
     
     
     
